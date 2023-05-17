@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wggt.compare.dao.ScanMapper">
+    <!-- 批量插入对比源 -->
+    <insert id="save" parameterType="com.wggt.compare.pojo.Scan">
+        insert 
+        into scan(id, url, sub_row, sub_col, near, channel, checkerr_mode, frame_count, create_time, update_time) 
+        VALUES
+        <foreach collection="srcLists" item="srcList" separator=",">
+            (null, #{srcList.url}, #{srcList.subRow}, #{srcList.subCol}, #{srcList.near}, #{srcList.channel}, #{srcList.checkerrMode}, #{srcList.frameCount}, #{srcList.createTime}, #{srcList.updateTime})
+        </foreach>
+    </insert>
+
+
+</mapper>
